@@ -1,4 +1,4 @@
-import fetchData from './src/getScore';
+
 
 const scoreList = document.querySelector('.score-list');
 const displayLists = async () => {

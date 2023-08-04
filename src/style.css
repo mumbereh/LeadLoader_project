@@ -1,90 +1,83 @@
-* {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
   margin: 0;
   padding: 0;
-  border: none;
-  font-family: Arial, sans-serif;
 }
 
-body {
-  color: #333;
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
+.leaderboard, .submit-form {
+  max-width: 600px;
+  margin: 20px auto;
   padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#heading {
+.leaderboard h1, .submit-form h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-#wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.score-board {
-  flex: 1;
-  padding-right: 20px;
-}
-
 .score-list {
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-.refreshbtn {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  flex-direction: column;
 }
 
-.refreshbtn button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-}
-
-.refreshbtn button:hover {
-  background-color: #0056b3;
-}
-
-#score_input {
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-#score_input h2 {
-  margin-bottom: 10px;
-}
-
-#score_input input {
-  width: 100%;
+.score-list-item {
   padding: 8px;
-  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
-#score_input .btn {
-  background-color: #28a745;
-  color: #fff;
+.score-list-item p {
+  margin: 0;
+}
+
+#refresh {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #ffffff;
   border: none;
-  padding: 8px 16px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-#score_input .btn:hover {
-  background-color: #1a682c;
+#refresh:hover {
+  background-color: #45a049;
 }
 
-.error {
-  color: #f00;
-  font-size: 14px;
+.submit-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-form label {
   margin-top: 10px;
+}
+
+.submit-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-form .error {
+  color: #ff0000;
+  margin: 5px 0;
+}
+
+.submit-form .btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-form .btn:hover {
+  background-color: #45a049;
 }

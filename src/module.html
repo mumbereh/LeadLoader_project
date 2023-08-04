@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LeaderBoard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <section class="container">
-        <div id="heading">
-            <h1>Leaderboard</h1>
-        </div>
-        <div id="wrapper">
-            <div class="score-board">
-                <div class="refreshbtn">
-                    <h2>Recent scores</h2>
-                    <button onClick="window.location.reload()">Refresh</button>
-                </div>
+  <div class="leaderboard">
+    <h1>Leaderboard</h1>
+    <div class="score-list">
+      <!-- The leaderboard scores will be displayed here -->
+    </div>
+    <button id="refresh">Refresh</button>
+  </div>
 
-                <div class="score-list"></div>
-            </div>
-            <div id="score_input">
-                <h2>Add your score</h2>
-                <form action="" method="GET">
-                    <input type="text" name="name" id="name" required placeholder="Your name" />
-                    <input type="text" name="score" id="score" required placeholder="Your score" />
-                    <button class="btn" type="submit">Submit</button>
-                    <p class="error"></p>
-                </form>
-            </div>
-        </div>
-    </section>
-    <script src="index.js"></script>
+  <div class="submit-form">
+    <h2>Submit Your Score</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+      <label for="score">Score:</label>
+      <input type="number" id="score" required>
+      <p class="error"></p>
+      <button class="btn" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="index.js"></script>
 </body>
-
 </html>

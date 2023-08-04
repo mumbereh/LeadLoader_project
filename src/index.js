@@ -1,57 +1,89 @@
-// index.js
-
 import './style.css';
+import axios from 'axios';
 
-const apiUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/HITirhqNpaDAqFyG4jlT/scores/';
+const gameId = 'HITirhqNpaDAqFyG4jlT';
+const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
+const apiUrl = `${baseUrl}/${gameId}/scores`;
 
-const fetchData = async () => {
-  const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data.result || [];
+const createGame = async (gameName) => {
+  try {
+    const response = await axios.post(baseUrl, {
+      name: gameName,
+    });
+    return response.data.result;
+  } catch (error) {
+    console.error('Error creating game:', error);
+    throw error;
+  }
 };
 
-const fetchScore = async (user, score) => {
-  await fetch(apiUrl, {
-    method: 'POST',
-    body: JSON.stringify({ user, score }),
-    headers: {
-      'Content-type': 'application/json',
-    },
+const fetchScores = async () => {
+  try {
+    const response = await axios.get(apiUrl);
+    return response.data.result || [];
+  } catch (error) {
+    console.error('Error fetching scores:', error);
+    throw error;
+  }
+};
+
+const saveScore = async (user, score) => {
+  try {
+    await axios.post(apiUrl, {
+      user,
+      score,
+    });
+  } catch (error) {
+    console.error('Error saving score:', error);
+    throw error;
+  }
+};
+
+const displayScores = (scores) => {
+  const scoreList = document.querySelector('.score-list');
+  scoreList.innerHTML = '';
+  scores.forEach(({ user, score }) => {
+    const div = document.createElement('div');
+    div.classList.add('score-list-item');
+    div.innerHTML = `<p>${user}: ${score}</p>`;
+    scoreList.appendChild(div);
   });
 };
 
-const displayLists = async () => {
+const refreshBtn = document.getElementById('refresh');
+refreshBtn.addEventListener('click', async () => {
   try {
-    const lists = await fetchData();
-    const scoreList = document.querySelector('.score-list');
-    scoreList.innerHTML = ''; // Clear existing content before appending new scores
-    lists.forEach(({ user, score }) => {
-      const div = document.createElement('div');
-      div.classList.add('score-list-item'); // Correct class name here
-      div.innerHTML = `<p>${user}: ${score}</p>`;
-      scoreList.appendChild(div);
-    });
+    const scores = await fetchScores();
+    displayScores(scores);
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error('Error refreshing scores:', error);
   }
-};
+});
 
 const submitBtn = document.querySelector('.btn');
 const nameForm = document.querySelector('#name');
 const scoreForm = document.querySelector('#score');
+const successMessage = document.querySelector('.success');
+const errorMessage = document.querySelector('.error');
 
 submitBtn.addEventListener('click', async (e) => {
   e.preventDefault();
-  const error = document.querySelector('.error');
-  if (!nameForm.value || !scoreForm.value) {
-    error.innerHTML = 'Please fill all input fields';
-  } else {
-    await fetchScore(nameForm.value, scoreForm.value);
-    nameForm.value = '';
-    scoreForm.value = '';
-    error.innerHTML = '';
-    displayLists();
+  try {
+    if (!nameForm.value || !scoreForm.value) {
+      errorMessage.textContent = 'Please fill all input fields';
+    } else {
+      await saveScore(nameForm.value, parseInt(scoreForm.value));
+      nameForm.value = '';
+      scoreForm.value = '';
+      errorMessage.textContent = '';
+      successMessage.textContent = 'Score submitted successfully!';
+
+      
+      const scores = await fetchScores();
+      displayScores(scores);
+    }
+  } catch (error) {
+    console.error('Error submitting score:', error);
   }
 });
 
-document.addEventListener('DOMContentLoaded', displayLists);
