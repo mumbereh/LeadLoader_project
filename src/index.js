@@ -78,7 +78,6 @@ submitBtn.addEventListener('click', async (e) => {
       errorMessage.textContent = '';
       successMessage.textContent = 'Score submitted successfully!';
 
-      
       const scores = await fetchScores();
       displayScores(scores);
     }
@@ -86,4 +85,3 @@ submitBtn.addEventListener('click', async (e) => {
     console.error('Error submitting score:', error);
   }
 });
-

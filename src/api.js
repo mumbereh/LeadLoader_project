@@ -1,5 +1,3 @@
-
-
 const gameId = 'HITirhqNpaDAqFyG4jlT';
 const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
 

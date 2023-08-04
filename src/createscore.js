@@ -1,5 +1,3 @@
-
-
 const scoreList = document.querySelector('.score-list');
 const displayLists = async () => {
   const data = await fetchData();
