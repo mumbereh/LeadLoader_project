@@ -1,21 +1,9 @@
 import './style.css';
 import axios from 'axios';
 
-const gameId = 'HITirhqNpaDAqFyG4jlT';
+const gameId = 'FrkNTBcoigpfgTQzrN44';
 const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games';
 const apiUrl = `${baseUrl}/${gameId}/scores`;
-
-const createGame = async (gameName) => {
-  try {
-    const response = await axios.post(baseUrl, {
-      name: gameName,
-    });
-    return response.data.result;
-  } catch (error) {
-    console.error('Error creating game:', error);
-    throw error;
-  }
-};
 
 const fetchScores = async () => {
   try {
@@ -72,7 +60,7 @@ submitBtn.addEventListener('click', async (e) => {
     if (!nameForm.value || !scoreForm.value) {
       errorMessage.textContent = 'Please fill all input fields';
     } else {
-      await saveScore(nameForm.value, parseInt(scoreForm.value));
+      await saveScore(nameForm.value, Number(scoreForm.value));
       nameForm.value = '';
       scoreForm.value = '';
       errorMessage.textContent = '';
