@@ -1,82 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: Arial, sans-serif;
+}
 
 body {
-  width: 50%;
-  margin: 2rem 6rem;
-  font-family: 'Roboto', sans-serif;
-  border: 5px solid black;
+  color: #333;
+  line-height: 1.6;
 }
 
-h1 {
-  font-size: 3rem;
-  padding-left: 2rem;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-h2 {
-  height: 1.5rem;
+#heading {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.recent-scores-container {
+#wrapper {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.score-board {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.score-list {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.refreshbtn {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  margin-bottom: 10px;
 }
 
-.recent-scores-header {
-  display: flex;
+.refreshbtn button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
-ul {
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  border: 3px solid black;
+.refreshbtn button:hover {
+  background-color: #0056b3;
 }
 
-.grey {
-  background-color: #f0f0f0;
+#score_input {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
-li {
-  font-weight: 500;
-  padding-left: 0.5rem;
-  display: flex;
-  width: 15rem;
-  list-style-type: none;
+#score_input h2 {
+  margin-bottom: 10px;
 }
 
-.leaderboard-wrapper {
-  display: flex;
-  justify-content: space-around;
-  height: 40rem;
+#score_input input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
 }
 
-.add-score-container {
-  display: flex;
-  flex-direction: column;
+#score_input .btn {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
-input {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  border: 3px solid black;
-  padding: 0.5rem;
-  margin: 0.5rem;
+#score_input .btn:hover {
+  background-color: #1a682c;
 }
 
-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #000;
-  background-color: #f0f0f0;
-  margin: 1.5rem;
-  padding: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-button:hover {
-  color: #00b;
+.error {
+  color: #f00;
+  font-size: 14px;
+  margin-top: 10px;
 }

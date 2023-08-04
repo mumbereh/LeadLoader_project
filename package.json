@@ -1,24 +1,18 @@
 {
   "name": "leadloader_project",
   "version": "1.0.0",
-  "description": "",
+  "description": "<a name=\"readme-top\"></a>",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack serve",
     "build": "webpack --mode production",
     "test": "jest --verbose"
   },
-  "jest": {
-    "testEnvironment": "jest-environment-jsdom",
-    "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/mocks/fileMock.js"
-    },
-    "verbose": true,
-    "testEnvironmentOptions": {
-      "html": "<html lang='zh-cmn-Hant'></html>",
-      "url": "https://jestjs.io/",
-      "userAgent": "Agent/007"
-    }
+  "verbose": true,
+  "testEnvironmentOptions": {
+    "html": "<html lang='zh-cmn-Hant'></html>",
+    "url": "https://jestjs.io/",
+    "userAgent": "Agent/007"
   },
   "babel": {
     "presets": [
